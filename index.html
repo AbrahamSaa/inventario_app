@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Iniciar sesión</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="public/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/font-awesome.min.css">
+    <link rel="stylesheet" href="public/css/owl.carousel.css">
+    <link rel="stylesheet" href="public/css/owl.theme.css">
+    <link rel="stylesheet" href="public/css/owl.transitions.css">
+    <link rel="stylesheet" href="public/css/animate.css">
+    <link rel="stylesheet" href="public/css/normalize.css">
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/morrisjs/morris.css">
+    <link rel="stylesheet" href="public/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="public/css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="public/css/metisMenu/metisMenu-vertical.css">
+    <link rel="stylesheet" href="public/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="public/css/calendar/fullcalendar.print.min.css">
+    <link rel="stylesheet" href="public/css/form/all-type-forms.css">
+    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="public/css/responsive.css">
+
+    <script src="public/js/vendor/modernizr-2.8.3.min.js"></script>
+ 	<script src="public/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <script src="public/js/wow.min.js"></script>
+    <script src="public/js/jquery-price-slider.js"></script>
+    <script src="public/js/jquery.meanmenu.js"></script>
+    <script src="public/js/owl.carousel.min.js"></script>
+    <script src="public/js/jquery.sticky.js"></script>
+    <script src="public/js/jquery.scrollUp.min.js"></script>
+    <script src="public/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="public/js/scrollbar/mCustomScrollbar-active.js"></script>
+    <script src="public/js/metisMenu/metisMenu.min.js"></script>
+    <script src="public/js/metisMenu/metisMenu-active.js"></script>
+    <script src="public/js/tab.js"></script>
+    <script src="public/js/icheck/icheck.min.js"></script>
+    <script src="public/js/icheck/icheck-active.js"></script>
+    <script src="public/js/plugins.js"></script>
+    <script src="public/js/main.js"></script>
+
+
+    <script type="text/javascript" src="public/js/config.js"></script>
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+	<script type="text/javascript" src="angular/angular-route.min.js"></script>
+    <script type="text/javascript" src="angular/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="factory/request.js"></script>
+</head>
+<body ng-app="Manager" ng-controller="loginController">
+	<div class="error-pagewrap">
+		<div class="error-page-int">
+			<div class="text-center m-b-md custom-login">
+				<h3>Bienvenido</h3>
+				<p>Por favor registrese o ingrese sesión</p>
+			</div>
+			<div class="content-error">
+				<div class="hpanel">
+                    <div class="panel-body">
+                        
+                        <form id="loginForm"  ng-submit="login()">
+                            <div class="form-group">
+                                <label class="control-label" for="username">Email</label>
+                                <input type="email" placeholder="example@gmail.com" title="Ingrese su correo" required class="form-control" ng-model="email">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Contraseña</label>
+                                <input type="password" title="Ingrese su contraseña" placeholder="******" required ng-model="password" id="password" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block loginbtn">Ingresar</button>
+                            <button type="button" class="btn btn-default btn-block" id="registerBtn">Registrarse</button>
+                        </form>
+
+                        <form id="registerForm" ng-submit="register()" style="display: none;">
+                        	 <div class="form-group">
+                                <label class="control-label" for="email">Email</label>
+                                <input type="email" placeholder="example@gmail.com" title="Ingrese su correo" required class="form-control" ng-model="emailRegister">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Contraseña</label>
+                                <input type="password" title="Ingrese su contraseña" placeholder="******" required ng-model="passwordRegister" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Nombre</label>
+                                <input type="text" title="Ingrese su nombre" placeholder="Nombre" required ng-model="nameRegister" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Apellido</label>
+                                <input type="text" title="Ingrese su Apellido" placeholder="Apellido" required ng-model="lastnameRegister" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Nombre de compañia</label>
+                                <input type="text" title="Ingrese su compañia" placeholder="compañia" required ng-model="companyRegister" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Dirección de compañia</label>
+                                <input type="text" title="Ingrese su compañia" placeholder="Dirección" required ng-model="companyDirRegister" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Crear usuario</button>
+                            <button type="button" class="btn btn-default btn-block" id="loginBack">Volver</button>
+                        </form>
+
+                    </div>
+                </div>
+			</div>
+		</div>   
+    </div>
+
+
+	<div id="snackbar">Some text some message..</div>
+
+
+    <script type="text/javascript" src="public/js/login.js"></script>
+</body>
+</html>
