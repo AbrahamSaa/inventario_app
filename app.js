@@ -18,7 +18,7 @@ app.controller("mainController", function($scope, request,$location) {
 
     $scope.showMessage = function(text, type, position){
 	    var x = document.getElementById("snackbar");
-	    x.innerHtml = text;
+	    x.innerHTML = text;
 	    let pos = "50";
 	    switch(position){
 	    	case "left":
