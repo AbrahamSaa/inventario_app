@@ -1,1 +1,1 @@
-const URLAPI = "localhost:3000" || "";
+const URLAPI = "http://localhost:3000";

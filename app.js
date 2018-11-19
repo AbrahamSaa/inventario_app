@@ -1,58 +1,19 @@
-var app = angular.module("Manager", ["ngCookies"]); 
+var app = angular.module("Manager", ["ngRoute"]); 
 
-app.controller("loginController", function($scope, request) {
+app.controller("mainController", function($scope, request,$location) {
     
     $scope.getToken = function(){
     	let token = $scope.getTokenCookie("token");
-        console.log(URLAPI);
     	if(token!=""){
-    		request.get("/auth", token).then((success)=>{
+    		request.get(URLAPI+"/auth", token).then((success)=>{
     			if(success.data.ok)
-    				window.location.href="/app";
+                    if(document.URL.indexOf("app")<0)
+    				    $location.path("/app");
     			
     		}).catch((e)=>{
     			console.log(e)
     		});
     	}
-    }
-
-    $scope.login = function () {
-    	let data = {
-    		email:$scope.email,
-    		password:$scope.password
-    	}
-
-    	request.post("/login", data, "").then((success)=>{
-    		if(success.data.ok){
-    			$scope.showMessage(success.message, "success", "left");
-    			document.cookie = "token="+success.data.token;
-    			window.location.href="/app";
-    		}
-    	}).catch((e)=>{
-			$scope.showMessage(e.data.message, "danger", "left");
-    	})
-
-    }
-
-    $scope.register = function(){
-    	let data = {
-    		email:$scope.emailRegister,
-    		password:$scope.passwordRegister,
-    		name:$scope.nameRegister,
-    		last_name:$scope.lastnameRegister,
-    		company_name:$scope.companyRegister,
-    		company_dir:$scope.companyRegister
-    	}
-
-    	request.post("/user", data, "").then((success)=>{
-    		if(success.data.ok){
-    			$scope.showMessage(success.data.message, "success", "left");
-    			$scope.email = data.email;
-    			$scope.password = data.password;
-    		}
-    	}).catch((e)=>{
-			$scope.showMessage(e.data.message, "danger", "left");
-    	});
     }
 
     $scope.showMessage = function(text, type, position){
