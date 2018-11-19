@@ -6,12 +6,10 @@ app.controller("loginController", function($scope, request, $location){
     	}
 
     	request.post(URLAPI+"/login", data, "").then((success)=>{
-            console.log(success);
-    		/*if(success.data.ok){
-    			$scope.showMessage(success.message, "success", "left");
+    		if(success.data.ok){
     			document.cookie = "token="+success.data.token;
     			window.location.href="/app";
-    		}*/
+    		}
     	}).catch((e)=>{
 			$scope.showMessage(e.data.message, "danger", "left");
     	})
@@ -29,12 +27,15 @@ app.controller("loginController", function($scope, request, $location){
     	}
 
     	request.post(URLAPI+"/user", data, "").then((success)=>{
+            console.log(success)
     		if(success.data.ok){
     			$scope.showMessage(success.data.message, "success", "left");
     			$scope.email = data.email;
     			$scope.password = data.password;
+                $scope.login();
     		}
     	}).catch((e)=>{
+            console.log(e);
 			$scope.showMessage(e.data.message, "danger", "left");
     	});
     }
