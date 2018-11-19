@@ -6,11 +6,12 @@ app.controller("loginController", function($scope, request, $location){
     	}
 
     	request.post(URLAPI+"/login", data, "").then((success)=>{
-    		if(success.data.ok){
+            console.log(success);
+    		/*if(success.data.ok){
     			$scope.showMessage(success.message, "success", "left");
     			document.cookie = "token="+success.data.token;
     			window.location.href="/app";
-    		}
+    		}*/
     	}).catch((e)=>{
 			$scope.showMessage(e.data.message, "danger", "left");
     	})
