@@ -35,7 +35,7 @@ app.controller("loginController", function($scope, request, $location){
                 $scope.login();
     		}
     	}).catch((e)=>{
-            console.log(e);
+            console.log(e.data.message);
 			$scope.showMessage(e.data.message, "danger", "left");
     	});
     }
