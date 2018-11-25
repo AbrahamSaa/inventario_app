@@ -49,10 +49,10 @@ app.controller("mainController", function($scope, request,$location, $http) {
     			
     		}).catch((e)=>{
     			if(!e.data.ok && document.URL.indexOf("login")<0)
-    				console.log("Entre")
+    				window.location.href = '/login';
     		});
     	}else if(document.URL.indexOf("login")<0){
-    		//window.location.href='/login';
+			window.location.href = '/login';
     	}
     }
 
@@ -117,7 +117,6 @@ app.controller("mainController", function($scope, request,$location, $http) {
 	}
 
 	$scope.getCompanies = function(){
-		console.log("entre");
 		request.get(URLAPI+"/company", $scope.getTokenCookie("token")).then((success)=>{
 			if(success.data.ok){
 				$scope.companies = success.data.companies;
@@ -240,6 +239,10 @@ app.controller("mainController", function($scope, request,$location, $http) {
         };
         reader.readAsDataURL(element.files[0]);
     };
+
+    $scope.disableMenu =function(){
+      	$(".sidebar").removeClass("active");
+    }
 
 
 	$scope.link = "http://localhost:4200/";

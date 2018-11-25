@@ -7,6 +7,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11DCE2">
+
 
     <link rel="stylesheet" href="https://app-inventar.herokuapp.com/public/style.css">
     
@@ -39,7 +41,7 @@
 <body ng-app="Manager" ng-controller="mainController">
 
  <div class="container-scroller">
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="background:#354856">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="index.html">
           <img src="https://app-inventar.herokuapp.com/public/images/Logo.png" alt="logo" />
@@ -48,7 +50,7 @@
           <img src="https://app-inventar.herokuapp.com/public/images/Logo-min.PNG" alt="logo" />
         </a>
       </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center">
+      <div class="navbar-menu-wrapper d-flex align-items-center" >
         
         <ul class="navbar-nav navbar-nav-right">
          
@@ -83,7 +85,7 @@
 
 
           <li class="nav-item">
-              <a class="nav-link" href="/companies">
+              <a class="nav-link" href="/companies" ng-click="disableMenu()">
                 <i class="menu-icon mdi mdi-store"></i>
                 <span class="menu-title">Compañias</span>
               </a>
@@ -91,14 +93,14 @@
 
           <div ng-if="companySelected">
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard">
+              <a class="nav-link" href="/dashboard"  ng-click="disableMenu()">
                 <i class="menu-icon mdi mdi-chart-line"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/employee">
+              <a class="nav-link" href="/employee" ng-click="disableMenu()">
                 <i class="menu-icon mdi mdi-account-multiple"></i>
                 <span class="menu-title">Empleados</span>
               </a>
@@ -106,19 +108,19 @@
 
             
             <li class="nav-item">
-              <a class="nav-link" href="/warehouse">
+              <a class="nav-link" href="/warehouse" ng-click="disableMenu()">
                 <i class="menu-icon mdi mdi-cube"></i>
                 <span class="menu-title">Almacenes</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/products">
+              <a class="nav-link" href="/products" ng-click="disableMenu()">
                 <i class="menu-icon mdi mdi-gift"></i>
                 <span class="menu-title">Productos</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/order">
+              <a class="nav-link" href="/order" ng-click="disableMenu()">
                 <i class="menu-icon mdi mdi-receipt"></i>
                 <span class="menu-title">Ordenes</span>
               </a>
@@ -184,5 +186,13 @@
     <script src="https://app-inventar.herokuapp.com/public/js/qrCode.min.js"></script>  
     <script src="https://app-inventar.herokuapp.com/public/js/moment.js"></script>  
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+      document.querySelector(".main-panel").addEventListener("click", function(){
+          $(".sidebar").removeClass("active");
+      });
+
+
+    </script>
 </body>
 </html>

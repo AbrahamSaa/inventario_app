@@ -55,4 +55,6 @@ app.controller("loginController", function($scope, request, $location){
             $("#registerForm").toggle(100);
         })
     }
+    
+    $scope.getToken();
 });

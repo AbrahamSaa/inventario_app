@@ -115,5 +115,6 @@ app.controller("employeeController", function($scope, request,$location) {
     	$scope.password = "";
 	}
 
-
+	
+	$scope.getToken();	
 });
