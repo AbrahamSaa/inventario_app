@@ -1,1 +1,68 @@
-<h1>BIENVENIDO</h1>
+<div ng-init="getCompanies()">
+
+	<div>
+		<div class="input-group" style="width: 100%;">
+			<div class="input-group-prepend">
+                <span class="input-group-text" style="color: black"><i class="fa fa-search"></i></span>
+			</div>
+            <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="basic-addon1" ng-model="buscar">
+        </div>
+	</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sd-12" style="margin-top: 2%"  ng-repeat="company in companies | filter:buscar">
+                <div class="card" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);transition: all 0.3s cubic-bezier(.25,.8,.25,1);" >
+            		<div style="text-align: center;">
+                        <img class="card-img-top" ng-init="setImg(company)" id="{{company._id}}" style="width: 100%;height: 15vw;object-fit: scale-down;">
+                    </div>
+            		<div class="card-body">
+                        <h5 class="card-title">{{company.name}}</h5>
+                        <p class="card-text">{{company.dir}}</p>
+                        <button class="btn btn-primary btn-block" ng-click="setCompany(company._id)">Entrar</button>
+                        <button class="btn btn-warning btn-block" ng-click="editCompany(company)">Editar</button>
+                        <button class="btn btn-danger btn-block" ng-click="deleteCompany(company._id)">Eliminar</button>
+            		</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editCompany" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background: white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar compañia</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form ng-submit="editCompanyFun()">
+              <div class="modal-body">
+                  <div class="form-group">
+                    <label class="control-label" for="name">Nombre:</label>
+                    <input type="text" placeholder="Nombre de la compañia" title="Ingrese el nombre de la compañia" required class="form-control" ng-model="nameEdit">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="name">Dirección:</label>
+                    <input type="text" placeholder="Dirección de la compañia" title="Ingrese el nombre de la compañia" required class="form-control" ng-model="dirEdit">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="name">Celular:</label>
+                    <input type="number" placeholder="55521585" title="Ingrese su telefono" class="form-control" ng-model="cellphoneEdit">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="name">Imagen:</label><br>
+                    <input type="file" ng-model="form.myfile"  onchange="angular.element(this).scope().uploadedFileApp(this)" accept="image/*" id="fileUploadImage">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Editar compañia</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+</div>

@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div>
+          <p class="card-title">
+            Empleados de {{selectedCompany}}
+
+            <button class="btn btn-success float-right" data-toggle="modal" data-target="#newEmployee" ng-click="setEditMode()">Agregar empleados</button>
+          </p>
+        </div>
+        
+        <div class="table-responsive" ng-init="getEmployees()">
+          <table class="table table-hover" ng-show="employees.length > 0">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="employee in employees">
+                <td>{{employee.name}}</td>
+                <td>{{employee.last_name}}</td>
+                <td>{{employee.email}}</td>
+                <td><button class="btn btn-warning btn-block" ng-click="editEmployeeBtn(employee._id)">Editar</button></td>
+                <td><button class="btn btn-danger btn-block" ng-click="deleteEmployeeModal(employee._id)">Eliminar</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div ng-show="employees.length == 0" style="text-align: center;"><h1>Aun no hay empleados</h1></div>
+        </div>
+
+        <div class="modal fade" id="newEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background: white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar empleado</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form ng-submit="addEmployee()">
+              <div class="modal-body">
+                <div class="alert alert-warning" ng-hide="editMode==true">Atención este empleado se agregara a <b>{{selectedCompany}}</b></div>
+                  <div class="form-group">
+                    <label class="control-label" for="name">Nombre:</label>
+                    <input type="text" placeholder="Nombre del empleado" title="Ingrese el nombre del empleado" required class="form-control formEmployee" ng-model="name">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label" for="name">Apellido:</label>
+                    <input type="text" placeholder="Apellido del empleado" title="Ingrese el apellido del empleado" required class="form-control formEmployee" ng-model="last_name">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="name">Email:</label>
+                    <input type="email" placeholder="correo@correo.com" title="Ingrese el apellido del empleado" required class="form-control formEmployee" ng-model="email">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="name">Contraseña:</label>
+                    <input type="password" placeholder="*******" title="Ingrese la contraseña empleado" required class="form-control formEmployee password" ng-model="password" >
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" ng-hide="editMode==true">Agregar empleado</button>
+                <button type="submit" class="btn btn-primary" ng-show="editMode==true">Editar empleado</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="deleteEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background: white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                 <h4>Estas a punto de borrar un empleado seguro que desea eliminar al empleado</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+                <button type="button" class="btn btn-danger"  ng-click="deleteEmployeeAction()">Eliminar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

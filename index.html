@@ -8,66 +8,187 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" href="public/img/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/font-awesome.min.css">
-    <link rel="stylesheet" href="public/css/owl.carousel.css">
-    <link rel="stylesheet" href="public/css/owl.theme.css">
-    <link rel="stylesheet" href="public/css/owl.transitions.css">
-    <link rel="stylesheet" href="public/css/animate.css">
-    <link rel="stylesheet" href="public/css/normalize.css">
-    <link rel="stylesheet" href="public/css/main.css">
-    <link rel="stylesheet" href="public/css/morrisjs/morris.css">
-    <link rel="stylesheet" href="public/css/scrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="public/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="public/css/metisMenu/metisMenu-vertical.css">
-    <link rel="stylesheet" href="public/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="public/css/calendar/fullcalendar.print.min.css">
-    <link rel="stylesheet" href="public/css/form/all-type-forms.css">
-    <link rel="stylesheet" href="public/style.css">
-    <link rel="stylesheet" href="public/css/responsive.css">
-
-    <script src="public/js/vendor/modernizr-2.8.3.min.js"></script>
- 	<script src="public/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="public/js/bootstrap.min.js"></script>
-    <script src="public/js/wow.min.js"></script>
-    <script src="public/js/jquery-price-slider.js"></script>
-    <script src="public/js/jquery.meanmenu.js"></script>
-    <script src="public/js/owl.carousel.min.js"></script>
-    <script src="public/js/jquery.sticky.js"></script>
-    <script src="public/js/jquery.scrollUp.min.js"></script>
-    <script src="public/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="public/js/scrollbar/mCustomScrollbar-active.js"></script>
-    <script src="public/js/metisMenu/metisMenu.min.js"></script>
-    <script src="public/js/metisMenu/metisMenu-active.js"></script>
-    <script src="public/js/tab.js"></script>
-    <script src="public/js/icheck/icheck.min.js"></script>
-    <script src="public/js/icheck/icheck-active.js"></script>
-    <script src="public/js/plugins.js"></script>
-    <script src="public/js/main.js"></script>
+    <link rel="stylesheet" href="http://localhost:4200/public/style.css">
+    
+    <link rel="stylesheet" href="https://app-inventar.herokuapp.com//public/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://app-inventar.herokuapp.com//public/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://app-inventar.herokuapp.com//public/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="https://app-inventar.herokuapp.com//public/css/style.css">
+    <link rel="shortcut icon" href="https://app-inventar.herokuapp.com//public/images/favicon.png" />
+    <link rel="stylesheet" href="https://app-inventar.herokuapp.com//public/vendors/iconfonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
-    <script type="text/javascript" src="public/js/config.js"></script>
-	<script type="text/javascript" src="angular/angular.min.js"></script>
-	<script type="text/javascript" src="angular/angular-route.min.js"></script>
-    <script type="text/javascript" src="angular/angular-cookies.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="factory/request.js"></script>
-    <script type="text/javascript" src="routes/loginRoutes.js"></script>
-    <script type="text/javascript" src="controllers/userController.js"></script>
-    <script type="text/javascript" src="controllers/loginController.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//public/js/config.js"></script>
+	  <script type="text/javascript" src="https://app-inventar.herokuapp.com//angular/angular.min.js"></script>
+	  <script type="text/javascript" src="https://app-inventar.herokuapp.com//angular/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//app.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//factory/request.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//routes/dashboardRoutes.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//controllers/userController.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//controllers/loginController.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//controllers/dashboardController.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//controllers/employeeController.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//controllers/warehouseController.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//controllers/productController.js"></script>
+    <script type="text/javascript" src="https://app-inventar.herokuapp.com//controllers/orderController.js"></script>
+
 
     <base href="/">
 </head>
 <body ng-app="Manager" ng-controller="mainController">
 
+ <div class="container-scroller">
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="index.html">
+          <img src="public/images/Logo.PNG" alt="logo" />
+        </a>
+        <a class="navbar-brand brand-logo-mini" href="index.html">
+          <img src="public/images/Logo-min.PNG" alt="logo" />
+        </a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center">
+        
+        <ul class="navbar-nav navbar-nav-right">
+         
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="mdi mdi-bell"></i>
+              <span class="count">4</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <span class="profile-text">Hola, {{userName}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              
+              <a class="dropdown-item pointer" ng-click="logout()">
+                Cerrar sesión
+              </a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <div class="container-fluid page-body-wrapper">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <h6 style="text-align: center;">{{selectedCompany}}</h6>
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <div class="nav-link">
+              <button class="btn btn-success btn-block" data-toggle="modal" data-target="#newCompany">Nueva compañia
+                <i class="mdi mdi-plus"></i>
+              </button>
+            </div>
+          </li>
 
-	<div ng-view></div>
 
+          <li class="nav-item">
+              <a class="nav-link" href="/companies">
+                <i class="menu-icon mdi mdi-store"></i>
+                <span class="menu-title">Compañias</span>
+              </a>
+          </li>
+
+          <div ng-if="companySelected">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">
+                <i class="menu-icon mdi mdi-chart-line"></i>
+                <span class="menu-title">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/employee">
+                <i class="menu-icon mdi mdi-account-multiple"></i>
+                <span class="menu-title">Empleados</span>
+              </a>
+            </li>
+
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/warehouse">
+                <i class="menu-icon mdi mdi-cube"></i>
+                <span class="menu-title">Almacenes</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/products">
+                <i class="menu-icon mdi mdi-gift"></i>
+                <span class="menu-title">Productos</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/order">
+                <i class="menu-icon mdi mdi-receipt"></i>
+                <span class="menu-title">Ordenes</span>
+              </a>
+            </li>
+          </div>
+          
+        </ul>
+      </nav>
+      
+      <div class="main-panel" style="background: #f2f8f9; height: calc(100vh - 63px); overflow-y: auto;">
+        <div ng-view style=" margin: 5%"></div>
+      </div>
+
+
+      <div class="modal fade" id="newCompany" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background: white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar compañia</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form ng-submit="newCompany()">
+              <div class="modal-body">
+                  <div class="form-group">
+                    <label class="control-label" for="name">Nombre:</label>
+                    <input type="text" placeholder="Nombre de la compañia" title="Ingrese el nombre de la compañia" required class="form-control" ng-model="name">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="name">Dirección:</label>
+                    <input type="text" placeholder="Dirección de la compañia" title="Ingrese el nombre de la compañia" required class="form-control" ng-model="dir">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="name">Celular:</label>
+                    <input type="number" placeholder="55521585" title="Ingrese su telefono" class="form-control" ng-model="cellphone">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="name">Imagen:</label><br>
+                    <input type="file" ng-model="form.myfile"  onchange="angular.element(this).scope().uploadedFileApp(this)" accept="image/*" id="fileUploadImage">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Agregar compañia</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 	<div id="snackbar">Some text some message..</div>
 
-
+    
+    <script src="https://app-inventar.herokuapp.com//public/vendors/js/vendor.bundle.base.js"></script>
+    <script src="https://app-inventar.herokuapp.com//public/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="https://app-inventar.herokuapp.com//public/js/off-canvas.js"></script>
+    <script src="https://app-inventar.herokuapp.com//public/js/misc.js"></script>
+    <script src="https://app-inventar.herokuapp.com//public/js/dashboard.js"></script>
+    <script src="https://app-inventar.herokuapp.com//public/js/qrCode.min.js"></script>  
+    <script src="https://app-inventar.herokuapp.com//public/js/moment.js"></script>  
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>

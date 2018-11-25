@@ -1,0 +1,126 @@
+
+<div class="container-fluid emp-profile" ng-init="getOrder()">
+ 	<div class="row">
+                   
+        <div class="col-md-9">
+            <div class="profile-head">
+                <h5>Fecha que se realizo: {{getDate(order.date)}}</h5>
+                <h6>Fecha de entrega de la orden: {{getDelivery(order.date_delivery)}}</h6>
+
+                <p>Status de la orden: {{getStatus(order.status)}}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+        	<button class="btn btn-warning" data-toggle="modal" data-target="#editOrder"  >Editar orden</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+  				<li class="nav-item">
+    				<a class="nav-link active" id="employee-tab" data-toggle="tab" href="#employee" role="tab" aria-controls="employee" aria-selected="true">Empleado</a>
+  				</li>
+  				<li class="nav-item">
+    				<a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="order" aria-selected="false">Items</a>
+  				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+  				<div class="tab-pane fade show active" id="employee" role="tabpanel" aria-labelledby="employee-tab">
+            <div ng-show="showEmployeeMsg==false">
+                <div style="text-align: center;"><h3>Empleado que realizara la orden</h3></div>
+                <h5>Nombre del empleado: {{employee.name}} {{employee.last_name}}</h5>
+                <h5>Correo del empleado: {{employee.email}}</h5>
+
+            </div>
+  					<div style="text-align: center;" class="mt-4" ng-show="showEmployeeMsg==true">
+  						<h3>Nigún empleado a aceptado la orden</h3>
+  					</div>
+  				</div>
+
+  				<div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab" ng-init="getOrderItem()">
+  					
+            		<button class="btn btn-success float-right mt-4" data-toggle="modal" data-target="#addOrderItem" >Agregar item a la orden</button>
+  						<div class="table-responsive">
+				          	<table class="table table-hover">
+				            	<thead>
+				              		<tr>
+				                		<th>Nombre del producto</th>
+				                		<th>Ciudad</th>
+				                		<th>Cantidad</th>
+				                		<th>Almacen</th>
+				                		<th>Eliminar de la orden</th>
+				              		</tr>
+				            	</thead>
+				            <tbody id="tbodyOrder">
+				              
+				            </tbody>
+				          </table>
+				        <div style="text-align: center; display: none;" id="noItemsMsg"><h1>Aun no hay items</h1></div>
+			        </div>
+			    </div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addOrderItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background: white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar Item a la orden</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form ng-submit="addOrderItem()">
+              <div class="modal-body">
+
+              	<div class="form-group">
+                    <label class="control-label" for="name">Seleccione el producto:</label>
+                    <select class="form-control" ng-model="productId" ng-change="changeProduct()">
+                    	<option value="">Seleccione un producto</option>
+                    	<option ng-repeat="product in products" value="{{product._id}}">{{product.name}}, cantidad: {{product.qty}}</option>
+                    </select>
+                  </div>
+                
+                  <div class="form-group">
+                    <label class="control-label" for="name">Cantidad de productos:</label>
+                    <input type="number" min="1" class="form-control" ng-model="qtyObj" max="{{qty}}">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" >Agregar item</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="editOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background: white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar orden</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form ng-submit="editOrder()">
+              <div class="modal-body">
+                <div class="alert alert-warning" ng-hide="editMode==true">Atención esta orden se agregara a <b>{{selectedCompany}}</b></div>
+                  
+
+                  <div class="form-group">
+                    <label class="control-label" for="name">Fecha de entrega:</label>
+                    <input type="text" id="datepicker" class="form-control" ng-model="date_delivery">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Editar orden</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div>
+          <p class="card-title">
+            Ordenes de {{selectedCompany}}
+
+            <button class="btn btn-success float-right" data-toggle="modal" data-target="#newOrder" ng-click="setEditMode()">Agregar orden</button>
+          </p>
+        </div>
+        
+        <div class="table-responsive" ng-init="getEmployees()">
+          <table class="table table-hover" ng-show="orders.length > 0">
+            <thead>
+              <tr>
+                <th>Fecha de entrega</th>
+                <th>Empleado</th>
+                <th>Status</th>
+                <th>Ver más</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="order in orders">
+                <td>{{getDelivery(order.date_delivery)}}</td>
+                <td>{{getEmployee(order.employee_id)}}</td>
+                <td>{{getStatus(order.completed)}}</td>
+                <td><button class="btn btn-primary btn-block" ng-click="openOrder(order._id)">Ver más</button></td>
+                <td><button class="btn btn-danger btn-block" ng-click="deleteOrderAct(order._id)">Eliminar</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div ng-show="orders.length == 0" style="text-align: center;"><h1>Aun no hay ordenes</h1></div>
+        </div>
+
+        <div class="modal fade" id="newOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background: white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar orden</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form ng-submit="addOrder()">
+              <div class="modal-body">
+                <div class="alert alert-warning" ng-hide="editMode==true">Atención esta orden se agregara a <b>{{selectedCompany}}</b></div>
+                  
+
+                  <div class="form-group">
+                    <label class="control-label" for="name">Fecha de entrega:</label>
+                    <input type="text" id="datepicker" class="form-control" ng-model="date_delivery">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" ng-hide="editMode==true">Agregar orden</button>
+                <button type="submit" class="btn btn-primary" ng-show="editMode==true">Editar orden</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="deleteOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background: white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                 <h4>Estas a punto de borrar una orden seguro que desea eliminar la orden</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger"  ng-click="deleteOrder()">Eliminar</button>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

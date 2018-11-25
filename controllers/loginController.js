@@ -7,12 +7,16 @@ app.controller("loginController", function($scope, request, $location){
 
     	request.post(URLAPI+"/login", data, "").then((success)=>{
     		if(success.data.ok){
-    			document.cookie = "token="+success.data.token;
+                var date = new Date();
+                var days = days || 365;
+                date.setTime(+ date + (days * 24*60*60*90));
+    			document.cookie = "token="+success.data.token+"; expires="+ date.toGMTString()+"; path=/";
     			window.location.href="/app";
     		}
     	}).catch((e)=>{
+            console.log(e);
 			$scope.showMessage(e.data.message, "danger", "left");
-    	})
+    	});
 
     }
 
@@ -22,8 +26,6 @@ app.controller("loginController", function($scope, request, $location){
     		password:$scope.passwordRegister,
     		name:$scope.nameRegister,
     		last_name:$scope.lastnameRegister,
-    		company_name:$scope.companyRegister,
-    		company_dir:$scope.companyRegister
     	}
 
     	request.post(URLAPI+"/user", data, "").then((success)=>{

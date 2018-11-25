@@ -1,3 +1,70 @@
+
+<div class="container-scroller" ng-init="setButtons()">
+    <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+      <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+          <div class="col-lg-4 mx-auto">
+            <h1 style="text-align: center;">Bienvenido</h1>
+            <div class="auto-form-wrapper">
+                <form  id="loginForm"  ng-submit="login()">
+                    <div class="form-group">
+                        <label class="label">Email:</label>
+                        <div class="input-group">
+                            <input type="text" placeholder="example@gmail.com" title="Ingrese su correo" required class="form-control" ng-model="email">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="mdi mdi-check-circle-outline"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Contraseña:</label>
+                        <div class="input-group">
+                            <input type="password" title="Ingrese su contraseña" placeholder="******" required ng-model="password" id="password" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="mdi mdi-check-circle-outline"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit-btn btn-block loginbtn">Entrar</button>
+                        <button type="button" class="btn btn-secondary submit-btn btn-block" id="registerBtn"">Crear nuevo usuario</button>
+                    </div>
+                </form>
+
+                <form id="registerForm" ng-submit="register()" style="display: none;">
+                     <div class="form-group">
+                        <label class="control-label" for="email">Email</label>
+                        <input type="email" placeholder="example@gmail.com" title="Ingrese su correo" required class="form-control" ng-model="emailRegister">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Contraseña</label>
+                        <input type="password" title="Ingrese su contraseña" placeholder="******" required ng-model="passwordRegister" id="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Nombre</label>
+                        <input type="text" title="Ingrese su nombre" placeholder="Nombre" required ng-model="nameRegister" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Apellido</label>
+                        <input type="text" title="Ingrese su Apellido" placeholder="Apellido" required ng-model="lastnameRegister" class="form-control">
+                    </div>
+                   
+                    <button type="submit" class="btn btn-success btn-block">Crear usuario</button>
+                    <button type="button" class="btn btn-default btn-block" id="loginBack">Volver</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!--
 <div class="error-pagewrap">
 		<div class="error-page-int">
 			<div class="text-center m-b-md custom-login">
@@ -54,4 +121,4 @@
                 </div>
 			</div>
 		</div>   
-    </div>
+    </div>-->
