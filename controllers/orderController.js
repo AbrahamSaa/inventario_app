@@ -96,7 +96,7 @@ app.controller("orderController", function($scope, request,$location, $routePara
 			$scope.showEmployeeMsg = true;
 
 		}else{
-			request.get(URLAPI+"/employee/"+_id, $scope.getTokenCookie("token"),localStorage["selectedCompany"])
+			request.get(URLAPI+"/employee/"+_id.split(/'/g,''), $scope.getTokenCookie("token"),localStorage["selectedCompany"])
 				.then((success)=>{
 					if(success.data.ok){
 						$scope.employee = success.data.user;
