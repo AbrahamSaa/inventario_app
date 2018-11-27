@@ -73,7 +73,7 @@ app.controller("orderController", function($scope, request,$location, $routePara
 	}
 
 	$scope.openOrder = function(_id){
-		$location.path("/orderDetails/"+_id);
+		$location.path("/orderDetails/"+_id.replace(/'/g, ''));
 	}
 
 	$scope.getOrder = function(){
