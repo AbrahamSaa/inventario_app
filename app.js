@@ -149,17 +149,22 @@ app.controller("mainController", function($scope, request,$location, $http) {
 
 	$scope.editCompanyFun = function(){
 		let company = {
-			name: $scope.nameEdit,
-			dir : $scope.dirEdit,
-			cellphone : $scope.cellphoneEdit,
+			name: $("#name").val(),
+			dir : $("#dir").val(),
+			cellphone :  $("#cellphone").val(),
 		}
+
+		console.log($scope.nameEdit);
+
+		console.log(company);
+
 
 		request.put(URLAPI+"/company/"+ $scope.companyId, company ,$scope.getTokenCookie("token"), $scope.companyId)
 			.then((success)=>{
+				$("#editCompany").modal("hide");
+				$scope.showMessage(success.data.message, "success", "left");
 				if($scope.files!== undefined){
-					$("#editCompany").modal("hide");
 					$scope.uploadImgCompany($scope.companyId, $scope.files[0]);
-					$scope.showMessage(success.data.message, "success", "left");
 				}
 			}).catch((e)=>{
 				$scope.showMessage(e.data.message, "danger", "left");
