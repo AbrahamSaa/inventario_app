@@ -24,7 +24,7 @@
             <tbody>
               <tr ng-repeat="order in orders">
                 <td>{{getDelivery(order.date_delivery)}}</td>
-                <td>{{getEmployee(order.employee_id)}}</td>
+                <td id="order-{{order.employee_id}}">{{getEmployee(order.employee_id)}}</td>
                 <td>{{getStatus(order.completed)}}</td>
                 <td><button class="btn btn-primary btn-block" ng-click="openOrder(order._id)">Ver más</button></td>
                 <td><button class="btn btn-danger btn-block" ng-click="deleteOrderAct(order._id)">Eliminar</button></td>

@@ -46,7 +46,6 @@ app.controller("orderController", function($scope, request,$location, $routePara
 	$scope.getOrders = function(){
 		request.get(URLAPI+"/order",$scope.getTokenCookie("token"),localStorage["selectedCompany"])
 			.then((success)=>{
-				console.log(success);
 				if(success.data.ok){
 					$scope.orders = success.data.orders;
 				}
@@ -82,9 +81,10 @@ app.controller("orderController", function($scope, request,$location, $routePara
 				if(success.data.ok){
 					$scope.order = success.data.order;
 					$("#datepicker").val(moment($scope.order.date_delivery ).format("D/MM/YYYY"));
-					$scope.getUserInfo($scope.order.employee_id);
+					$scope.getEmployeeInfo($scope.order.employee_id);
 				}
 			}).catch((e)=>{
+				console.log(e);
 				$scope.showMessage(e.data.message, "danger", "left");
 			});
 	}
@@ -96,6 +96,7 @@ app.controller("orderController", function($scope, request,$location, $routePara
 			$scope.showEmployeeMsg = true;
 
 		}else{
+			console.log(URLAPI+"/employee/"+_id.split(/'/g,''));
 			request.get(URLAPI+"/employee/"+_id.split(/'/g,''), $scope.getTokenCookie("token"),localStorage["selectedCompany"])
 				.then((success)=>{
 					if(success.data.ok){
@@ -124,6 +125,51 @@ app.controller("orderController", function($scope, request,$location, $routePara
 	$scope.getEmployee = function(_id){
 		if(_id === null || _id === undefined)
 			return "Ningun empleado ha aceptado";
+		else{
+			var intervalFun = setInterval(function(){
+				if(getEmployeeList){
+					console.log("entre");
+					for(var i = 0; i < $scope.employees.length; i++){
+						if($scope.employees[i]["_id"]==_id)
+							$("#order-"+_id).text($scope.employees[i]["name"]+" "+ $scope.employees[i]["last_name"]);
+					}
+					clearInterval(intervalFun);
+				}
+			},1000);
+
+		}
+	}
+
+	$scope.getEmployeeInfo = function(_id){
+		console.log(_id);
+		request.get(URLAPI+"/employee/"+_id,$scope.getTokenCookie("token"),localStorage["selectedCompany"])
+		.then((success)=>{
+			if(success.data.ok){
+				$scope.employee = success.data.user;
+			}
+		}).catch((e)=>{
+			console.log(e);
+		});
+	}
+
+	var getEmployeeList = false;
+
+	$scope.getEmployees = function(){
+		request.get(URLAPI+"/employee",$scope.getTokenCookie("token"),localStorage["selectedCompany"])
+			.then((success)=>{
+				if(success.data.ok){
+					let employees = [];
+					for(var i = 0; i < success.data.users.length; i++){
+						if(!success.data.users[i]["account_delete"]){
+							employees.push(success.data.users[i]);
+						}
+					}
+					$scope.employees = employees;
+					getEmployeeList = true;
+				}
+			}).catch((e)=>{
+				console.log(e);
+			})
 	}
 
 	$scope.getStatus = function(_status){
